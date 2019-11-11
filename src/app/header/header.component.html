@@ -1,15 +1,14 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">Antique Tetrachords Player</a>
+      <a href="#" class="navbar-brand">{{ 'title' | translate }}</a>
     </div>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link">EN</a>
+        <a href="#" class="nav-link" (click)="onUseLanguage('en')">EN</a>
       </li>
-      |
       <li class="nav-item">
-        <a href="#" class="nav-link">RU</a>
+        <a href="#" class="nav-link" (click)="onUseLanguage('ru')">RU</a>
       </li>
     </ul>
   </div>
