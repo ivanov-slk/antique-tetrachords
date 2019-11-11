@@ -5,12 +5,43 @@ import * as Tone from 'tone';
 @Injectable()
 export class SynthService {
   synth: any;
+  baseFrequency: number = 250;
 
   constructor() {
     this.synth = new Tone.Synth().toMaster();
   }
 
-  playMelody(freqs: number[] | string[]) {
+  private calculateFrequencies(ratios: string[]): number[] {
+    // parse the ratios
+    const factors = ratios.map(element => {
+      let numerator: string;
+      let denominator: string;
+      [numerator, denominator] = element.split('/');
+      return +numerator / +denominator;
+    });
+
+    // calculate the cents
+    const cents = factors.map(element => {
+      return 1200 * Math.log2(element);
+    });
+
+    // calculate the frequencies
+    let freqs: number[] = [this.baseFrequency];
+    let tempFreq = this.baseFrequency;
+    let newTempFreq: number;
+    for (let i = 0; i < cents.length; i++) {
+      newTempFreq = tempFreq * 2 ** (cents[i] / 1200);
+      freqs.push(newTempFreq);
+      tempFreq = newTempFreq;
+    }
+    console.log(cents);
+    console.log(cents.reduce((accumulator, value) => accumulator + value));
+    console.log(freqs);
+    return freqs;
+  }
+
+  playMelody(melodyRatios: string[]) {
+    const frequencies = this.calculateFrequencies(melodyRatios);
     let synth = new Tone.Synth().toMaster();
     const patternName = 'up';
 
@@ -19,11 +50,12 @@ export class SynthService {
         //the order of the notes passed in depends on the pattern
         synth.triggerAttackRelease(note, '4n', time);
       },
-      freqs,
+      frequencies,
       patternName
     );
-    pattern.iterations = freqs.length;
+    pattern.iterations = frequencies.length;
     pattern.start();
+    Tone.Transport.bpm.value = 120;
     Tone.Transport.start('+0.1');
   }
 

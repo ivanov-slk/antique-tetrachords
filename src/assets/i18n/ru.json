@@ -1,3 +1,20 @@
 {
-  "title": "Античные тетрахорды"
+  "title": "Античные тетрахорды",
+  "architesEnharmonic": "Архит - энгармонический",
+  "eratosthenesEnharmonic": "Эратосфэн - энгармонический",
+  "didimesEnharmonic": "Дидим - энгармонический",
+  "ptolemyEnharmonic": "Птолемей - энгармонический",
+  "architesChromatic": "Архит - хроматический",
+  "eratosthenesChromatic": "Эратосфен - хроматический",
+  "didimesChromatic": "Дидим - хроматический",
+  "ptolemyChromatic": "Птолемей - хроматический",
+  "ptolemyChromatic2": "Птолемей - хроматический (2)",
+  "architesDiatonic": "Архит - диатонический",
+  "eratosthenesDiatonic": "Эратосфен - диатонический",
+  "didimesDiatonic": "Дидим - диатонический",
+  "ptolemyDiatonicSoft": "Птолемей - диатонический - мягкий",
+  "ptolemyDiatonicTonic": "Птолемей - диатонический - тоновой",
+  "ptolemyDiatonicHard": "Птолемей - диатонический - напряженный",
+  "ptolemyDiatonicFlat": "Птолемей - диатонический - ровный",
+  "ptolemyDiatonicDouble": "Птолемей - диатонический - двухтоновой"
 }

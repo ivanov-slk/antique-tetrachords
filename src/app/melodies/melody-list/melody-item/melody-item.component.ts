@@ -9,6 +9,7 @@ import { SynthService } from '../../synth.service';
 })
 export class MelodyItemComponent implements OnInit {
   @Input() melody: Melody;
+  isActive = false;
 
   constructor(private synthService: SynthService) {}
 

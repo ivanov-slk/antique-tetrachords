@@ -1,3 +1,20 @@
 {
-  "title": "Antique Tetrachords"
+  "title": "Antique Tetrachords",
+  "architesEnharmonic": "Archites - Enharmonic",
+  "eratosthenesEnharmonic": "Eratosthenes - Enharmonic",
+  "didimesEnharmonic": "Didimes - Enharmonic",
+  "ptolemyEnharmonic": "Ptolemy - Enharmonic",
+  "architesChromatic": "Archites - Chromatic",
+  "eratosthenesChromatic": "Eratosthenes - Chromatic",
+  "didimesChromatic": "Didimes - Chromatic",
+  "ptolemyChromatic": "Ptolemy - Chromatic",
+  "ptolemyChromatic2": "Ptolemy - Chromatic (2)",
+  "architesDiatonic": "Archites - Diatonic",
+  "eratosthenesDiatonic": "Eratosthenes - Diatonic",
+  "didimesDiatonic": "Didimes - Diatonic",
+  "ptolemyDiatonicSoft": "Ptolemy - Diatonic - Soft",
+  "ptolemyDiatonicTonic": "Ptolemy - Diatonic - Tonic",
+  "ptolemyDiatonicHard": "Ptolemy - Diatonic - Hard",
+  "ptolemyDiatonicFlat": "Ptolemy - Diatonic - Flat",
+  "ptolemyDiatonicDouble": "Ptolemy - Diatonic - Double"
 }
