@@ -7,13 +7,23 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TranslateService } from './translate.service';
 import { TranslatePipe } from './translate.pipe';
+import { MelodiesComponent } from './melodies/melodies.component';
+import { MelodyListComponent } from './melodies/melody-list/melody-list.component';
+import { MelodyItemComponent } from './melodies/melody-list/melody-item/melody-item.component';
 
 export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
 }
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, TranslatePipe],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    TranslatePipe,
+    MelodiesComponent,
+    MelodyListComponent,
+    MelodyItemComponent
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
     TranslateService,
