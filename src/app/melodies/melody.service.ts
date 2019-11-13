@@ -4,6 +4,16 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MelodyService {
   private melodies: Melody[] = [
+    new Melody('temperedDur', [
+      '1.12246204831/1',
+      '1.12246204831/1',
+      '1.05946309436/1'
+    ]),
+    new Melody('temperedMoll', [
+      '1.12246204831/1',
+      '1.05946309436/1',
+      '1.12246204831/1'
+    ]),
     new Melody('architesEnharmonic', ['28/27', '36/35', '5/4']),
     new Melody('eratosthenesEnharmonic', ['40/39', '39/38', '19/15']),
     new Melody('didimesEnharmonic', ['32/31', '31/30', '5/4']),

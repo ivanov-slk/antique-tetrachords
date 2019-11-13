@@ -19,7 +19,7 @@ export class SynthService {
       [numerator, denominator] = element.split('/');
       return +numerator / +denominator;
     });
-
+    console.log(factors);
     // calculate the cents
     const cents = factors.map(element => {
       return 1200 * Math.log2(element);
