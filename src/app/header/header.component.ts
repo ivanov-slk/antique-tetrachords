@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '../translate.service';
+import { TranslateService } from '../shared/translate.service';
 
 @Component({
   selector: 'app-header',
