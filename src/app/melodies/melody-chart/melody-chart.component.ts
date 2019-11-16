@@ -57,7 +57,7 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
     this.changeLanguageSubscription = this.translateSyncService.changeEmitter.subscribe(
       () => {
         console.log('translating...');
-        this.translateChart();
+        this.updateChartData();
       }
     );
   }
@@ -75,7 +75,6 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
     }
 
     // produce an empty array of data bricks
-    // if (!this.chartData) {
     this.chartData = [];
     for (let i = 0; i < max; i++) {
       const chartDataBrick: ChartDataBrick = {
@@ -100,20 +99,6 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
 
     // update the graph object
     this.graph.data = [...this.chartData];
-  }
-
-  translateChart() {
-    console.log('enter');
-    const chartLabels: string[] = this.playedMelodies.map(element => {
-      return this.translatePipe.transform(element.name);
-    });
-    console.log(chartLabels);
-    console.log(this.graph.data[1].x);
-    this.graph.data.forEach(element => {
-      element.x = chartLabels.slice();
-    });
-    console.log(this.graph.data[1].x);
-    console.log('================================================');
   }
 
   ngOnDestroy() {
