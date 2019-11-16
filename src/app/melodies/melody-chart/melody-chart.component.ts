@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SynthService, MelodyData } from '../synth.service';
 import { Subscription } from 'rxjs';
+import { TranslatePipe } from 'src/app/shared/translate.pipe';
+import { TranslateSyncService } from 'src/app/shared/translate-sync.service';
 
 interface ChartDataBrick {
   x: string[];
@@ -16,6 +18,7 @@ interface ChartDataBrick {
 })
 export class MelodyChartComponent implements OnInit, OnDestroy {
   melodyDataSubscription: Subscription;
+  changeLanguageSubscription: Subscription;
   melodyData: MelodyData;
   playedMelodies: MelodyData[] = [];
   chartData: ChartDataBrick[];
@@ -38,21 +41,23 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
     layout: { barmode: 'stack', title: 'A Fancy Plot' }
   };
 
-  constructor(private synthService: SynthService) {}
+  constructor(
+    private synthService: SynthService,
+    private translateSyncService: TranslateSyncService,
+    private translatePipe: TranslatePipe
+  ) {}
 
   ngOnInit() {
     this.melodyDataSubscription = this.synthService.melodyDataEmitter.subscribe(
       melodyData => {
         this.playedMelodies.push(melodyData);
         this.updateChartData();
-        console.log(this.playedMelodies.length);
-        console.log('played melodies', this.playedMelodies);
-        // console.log(melodyData.factors);
-        // console.log(melodyData.cents);
-        // console.log(
-        //   melodyData.cents.reduce((accumulator, value) => accumulator + value)
-        // );
-        // console.log(melodyData.frequencies);
+      }
+    );
+    this.changeLanguageSubscription = this.translateSyncService.changeEmitter.subscribe(
+      () => {
+        console.log('translating...');
+        this.translateChart();
       }
     );
   }
@@ -85,18 +90,34 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.chartData.length; i++) {
       for (let j = 0; j < this.playedMelodies.length; j++) {
         const melody = this.playedMelodies[j];
-        if (!this.chartData[i].x.includes(melody.name)) {
-        this.chartData[i].x.push(melody.name);
-        this.chartData[i].y.push(melody.cents[i]);}
+        const melodyLabel = this.translatePipe.transform(melody.name);
+        if (!this.chartData[i].x.includes(melodyLabel)) {
+          this.chartData[i].x.push(melodyLabel);
+          this.chartData[i].y.push(melody.cents[i]);
+        }
       }
     }
-    console.log('chartr data', this.chartData);
 
     // update the graph object
     this.graph.data = [...this.chartData];
   }
 
+  translateChart() {
+    console.log('enter');
+    const chartLabels: string[] = this.playedMelodies.map(element => {
+      return this.translatePipe.transform(element.name);
+    });
+    console.log(chartLabels);
+    console.log(this.graph.data[1].x);
+    this.graph.data.forEach(element => {
+      element.x = chartLabels.slice();
+    });
+    console.log(this.graph.data[1].x);
+    console.log('================================================');
+  }
+
   ngOnDestroy() {
     this.melodyDataSubscription.unsubscribe();
+    this.changeLanguageSubscription.unsubscribe();
   }
 }

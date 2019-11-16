@@ -14,8 +14,8 @@ import { TranslatePipe } from './shared/translate.pipe';
 import { MelodiesComponent } from './melodies/melodies.component';
 import { MelodyListComponent } from './melodies/melody-list/melody-list.component';
 import { MelodyItemComponent } from './melodies/melody-list/melody-item/melody-item.component';
-import { TestChartComponent } from './test-chart/test-chart.component';
 import { MelodyChartComponent } from './melodies/melody-chart/melody-chart.component';
+import { TranslateSyncService } from './shared/translate-sync.service';
 
 export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
@@ -31,7 +31,6 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MelodiesComponent,
     MelodyListComponent,
     MelodyItemComponent,
-    TestChartComponent,
     MelodyChartComponent
   ],
   imports: [
@@ -43,6 +42,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
   ],
   providers: [
     TranslateService,
+    TranslateSyncService,
     {
       provide: APP_INITIALIZER,
       useFactory: setupTranslateFactory,
