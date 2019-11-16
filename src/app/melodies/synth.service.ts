@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 
 import * as Tone from 'tone';
 import { Subject } from 'rxjs';
+import { Melody } from './melody.model';
 
 export interface MelodyData {
+  name: string;
   factors: number[];
   cents: number[];
   frequencies: number[];
@@ -19,15 +21,14 @@ export class SynthService {
     this.synth = new Tone.Synth().toMaster();
   }
 
-  private calculateMelodyData(ratios: string[]): MelodyData {
+  private calculateMelodyData(melody: Melody): MelodyData {
     // parse the ratios
-    const factors = ratios.map(element => {
+    const factors = melody.ratios.map(element => {
       let numerator: string;
       let denominator: string;
       [numerator, denominator] = element.split('/');
       return +numerator / +denominator;
     });
-    console.log(factors);
 
     // calculate the cents
     const cents = factors.map(element => {
@@ -43,13 +44,12 @@ export class SynthService {
       frequencies.push(newTempFreq);
       tempFreq = newTempFreq;
     }
-    console.log(cents);
-    console.log(cents.reduce((accumulator, value) => accumulator + value));
-    console.log(frequencies);
+
     return {
+      name: melody.name,
       factors,
       cents,
-      frequencies //shorthand
+      frequencies //shorthand notation
     };
   }
 
@@ -71,8 +71,8 @@ export class SynthService {
     Tone.Transport.start('+0.1');
   }
 
-  handleMelody(melodyRatios: string[]) {
-    const melodyData = this.calculateMelodyData(melodyRatios);
+  handleMelody(melody: Melody) {
+    const melodyData = this.calculateMelodyData(melody);
     this.playMelody(melodyData.frequencies);
     this.melodyDataEmitter.next(melodyData);
   }

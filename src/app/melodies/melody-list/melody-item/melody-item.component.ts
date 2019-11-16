@@ -17,6 +17,6 @@ export class MelodyItemComponent implements OnInit {
 
   onPlay() {
     console.log('playing...');
-    this.synthService.handleMelody(this.melody.ratios);
+    this.synthService.handleMelody(this.melody);
   }
 }
