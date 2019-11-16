@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
 
 import * as Tone from 'tone';
+import { Subject } from 'rxjs';
+
+export interface MelodyData {
+  factors: number[];
+  cents: number[];
+  frequencies: number[];
+}
 
 @Injectable()
 export class SynthService {
   synth: any;
   baseFrequency: number = 250;
+  melodyDataEmitter = new Subject<MelodyData>();
 
   constructor() {
     this.synth = new Tone.Synth().toMaster();
   }
 
-  private calculateFrequencies(ratios: string[]): number[] {
+  private calculateMelodyData(ratios: string[]): MelodyData {
     // parse the ratios
     const factors = ratios.map(element => {
       let numerator: string;
@@ -20,28 +28,32 @@ export class SynthService {
       return +numerator / +denominator;
     });
     console.log(factors);
+
     // calculate the cents
     const cents = factors.map(element => {
       return 1200 * Math.log2(element);
     });
 
     // calculate the frequencies
-    let freqs: number[] = [this.baseFrequency];
+    let frequencies: number[] = [this.baseFrequency];
     let tempFreq = this.baseFrequency;
     let newTempFreq: number;
     for (let i = 0; i < cents.length; i++) {
       newTempFreq = tempFreq * 2 ** (cents[i] / 1200);
-      freqs.push(newTempFreq);
+      frequencies.push(newTempFreq);
       tempFreq = newTempFreq;
     }
     console.log(cents);
     console.log(cents.reduce((accumulator, value) => accumulator + value));
-    console.log(freqs);
-    return freqs;
+    console.log(frequencies);
+    return {
+      factors,
+      cents,
+      frequencies //shorthand
+    };
   }
 
-  playMelody(melodyRatios: string[]) {
-    const frequencies = this.calculateFrequencies(melodyRatios);
+  private playMelody(frequencies: number[]) {
     let synth = new Tone.Synth().toMaster();
     const patternName = 'up';
 
@@ -59,21 +71,9 @@ export class SynthService {
     Tone.Transport.start('+0.1');
   }
 
-  playCMajorScale() {
-    let synth = new Tone.Synth().toMaster();
-    const myScale = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5'];
-    const patternName = 'up';
-
-    let pattern = new Tone.Pattern(
-      function(time, note) {
-        //the order of the notes passed in depends on the pattern
-        synth.triggerAttackRelease(note, '4n', time);
-      },
-      myScale,
-      patternName
-    );
-    pattern.iterations = myScale.length;
-    pattern.start();
-    Tone.Transport.start('+0.1');
+  handleMelody(melodyRatios: string[]) {
+    const melodyData = this.calculateMelodyData(melodyRatios);
+    this.playMelody(melodyData.frequencies);
+    this.melodyDataEmitter.next(melodyData);
   }
 }

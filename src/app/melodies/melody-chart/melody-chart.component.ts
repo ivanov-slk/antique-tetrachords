@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SynthService, MelodyData } from '../synth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-melody-chart',
   templateUrl: './melody-chart.component.html',
   styleUrls: ['./melody-chart.component.css']
 })
-export class MelodyChartComponent implements OnInit {
+export class MelodyChartComponent implements OnInit, OnDestroy {
+  melodyDataSubscription: Subscription;
+  melodyData: MelodyData;
+
   public graph = {
     data: [
       {
@@ -24,7 +29,17 @@ export class MelodyChartComponent implements OnInit {
     layout: { barmode: 'stack', title: 'A Fancy Plot' }
   };
 
-  constructor() {}
+  constructor(private synthService: SynthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.melodyDataSubscription = this.synthService.melodyDataEmitter.subscribe(
+      melodyData => {
+        console.log(melodyData);
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.melodyDataSubscription.unsubscribe();
+  }
 }
