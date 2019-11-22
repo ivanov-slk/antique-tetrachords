@@ -24,21 +24,14 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
   chartData: ChartDataBrick[];
 
   public graph = {
-    data: [
-      {
-        x: ['giraffes', 'orangutans', 'monkeys'],
-        y: [20, 14, 23],
-        // name: 'SF Zoo',
-        type: 'bar'
-      },
-      {
-        x: ['giraffes', 'orangutans', 'monkeys'],
-        y: [12, 18, 29],
-        // name: 'LA Zoo',
-        type: 'bar'
-      }
-    ],
-    layout: { barmode: 'stack', title: 'A Fancy Plot' }
+    data: [],
+    layout: {
+      barmode: 'stack',
+      autosize: true,
+      xaxis: { automargin: true },
+      yaxis: { automargin: true },
+      title: ''
+    }
   };
 
   constructor(
@@ -93,12 +86,16 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
         if (!this.chartData[i].x.includes(melodyLabel)) {
           this.chartData[i].x.push(melodyLabel);
           this.chartData[i].y.push(melody.cents[i]);
+          this.chartData[i].name = `${this.translatePipe.transform(
+            'chart__legend'
+          )} ${i + 1}`;
         }
       }
     }
 
     // update the graph object
     this.graph.data = [...this.chartData];
+    this.graph.layout.title = this.translatePipe.transform('chart__title');
   }
 
   ngOnDestroy() {
