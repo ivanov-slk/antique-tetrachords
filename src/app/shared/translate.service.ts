@@ -42,7 +42,7 @@ export class TranslateService {
 }
 
 const en = {
-  title: "Antique Tetrachords travis",
+  title: "Antique Tetrachords",
   temperedDur: "Tempered Dur",
   temperedMoll: "Tempered Moll",
   architesEnharmonic: "Archites - Enharmonic",
@@ -67,7 +67,7 @@ const en = {
 };
 
 const ru = {
-  title: "Античные тетрахорды travis",
+  title: "Античные тетрахорды",
   temperedDur: "Темперированный - мажор",
   temperedMoll: "Темперированный - минор",
   architesEnharmonic: "Архит - энгармонический",
