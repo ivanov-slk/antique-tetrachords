@@ -1,8 +1,30 @@
-<div class="row">
-  <div class="col-md-10">
-    <app-melody-item
-      *ngFor="let melodyEl of melodies"
-      [melody]="melodyEl"
-    ></app-melody-item>
-  </div>
+<!-- <div class="row"> -->
+<div class="col-md-10">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a
+        href="#"
+        class="nav-link"
+        (click)="setMelodyGroup('antique')"
+        [ngClass]="{ active: melodyGroup === 'antique' }"
+      >
+        <h5>Antique</h5>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        href="#"
+        class="nav-link"
+        (click)="setMelodyGroup('byzantine')"
+        [ngClass]="{ active: melodyGroup === 'byzantine' }"
+      >
+        <h5>Byzantine</h5>
+      </a>
+    </li>
+  </ul>
+  <app-melody-item
+    *ngFor="let melodyEl of melodies"
+    [melody]="melodyEl"
+  ></app-melody-item>
 </div>
+<!-- </div> -->
