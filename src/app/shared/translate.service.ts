@@ -63,7 +63,9 @@ const en = {
   ptolemyDiatonicFlat: "Ptolemy - Diatonic - Flat",
   ptolemyDiatonicDouble: "Ptolemy - Diatonic - Double",
   chart__title: "Comparison of tetrachords' intervals",
-  chart__legend: "Interval"
+  chart__legend: "Interval",
+  antique: "Antique",
+  byzantine: "Byzantine"
 };
 
 const ru = {
@@ -88,5 +90,7 @@ const ru = {
   ptolemyDiatonicFlat: "Птолемей - диатонический - ровный",
   ptolemyDiatonicDouble: "Птолемей - диатонический - двухтоновой",
   chart__title: "Сравнение тетрахордных интервалов",
-  chart__legend: "Интервал"
+  chart__legend: "Интервал",
+  antique: "Античные",
+  byzantine: "Византийские"
 };
