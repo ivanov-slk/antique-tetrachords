@@ -20,7 +20,6 @@ export class MelodyListComponent implements OnInit {
 
   setMelodyGroup(value: string) {
     this.melodyGroup = value;
-    console.log(this.melodyGroup);
     this.melodies = this.melodyService.getMelodies(value);
   }
 }

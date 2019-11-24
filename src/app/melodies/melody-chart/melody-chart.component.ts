@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SynthService, MelodyData } from '../synth.service';
-import { Subscription } from 'rxjs';
-import { TranslatePipe } from 'src/app/shared/translate.pipe';
-import { TranslateSyncService } from 'src/app/shared/translate-sync.service';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { SynthService, MelodyData } from "../synth.service";
+import { Subscription } from "rxjs";
+import { TranslatePipe } from "src/app/shared/translate.pipe";
+import { TranslateSyncService } from "src/app/shared/translate-sync.service";
 
 interface ChartDataBrick {
   x: string[];
@@ -12,9 +12,9 @@ interface ChartDataBrick {
 }
 
 @Component({
-  selector: 'app-melody-chart',
-  templateUrl: './melody-chart.component.html',
-  styleUrls: ['./melody-chart.component.css']
+  selector: "app-melody-chart",
+  templateUrl: "./melody-chart.component.html",
+  styleUrls: ["./melody-chart.component.css"]
 })
 export class MelodyChartComponent implements OnInit, OnDestroy {
   melodyDataSubscription: Subscription;
@@ -26,11 +26,11 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
   public graph = {
     data: [],
     layout: {
-      barmode: 'stack',
+      barmode: "stack",
       autosize: true,
       xaxis: { automargin: true },
       yaxis: { automargin: true },
-      title: ''
+      title: ""
     }
   };
 
@@ -49,7 +49,6 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
     );
     this.changeLanguageSubscription = this.translateSyncService.changeEmitter.subscribe(
       () => {
-        console.log('translating...');
         this.updateChartData();
       }
     );
@@ -63,8 +62,8 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
     const max = Math.max(...freqLengths);
     const min = Math.min(...freqLengths);
     if (max !== min) {
-      console.log('The arrays length is different!');
-      return;
+      console.log("The arrays length is different!");
+      // return;
     }
 
     // produce an empty array of data bricks
@@ -73,7 +72,7 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
       const chartDataBrick: ChartDataBrick = {
         x: [],
         y: [],
-        type: 'bar'
+        type: "bar"
       };
       this.chartData.push(chartDataBrick);
     }
@@ -87,7 +86,7 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
           this.chartData[i].x.push(melodyLabel);
           this.chartData[i].y.push(melody.cents[i]);
           this.chartData[i].name = `${this.translatePipe.transform(
-            'chart__legend'
+            "chart__legend"
           )} ${i + 1}`;
         }
       }
@@ -95,7 +94,7 @@ export class MelodyChartComponent implements OnInit, OnDestroy {
 
     // update the graph object
     this.graph.data = [...this.chartData];
-    this.graph.layout.title = this.translatePipe.transform('chart__title');
+    this.graph.layout.title = this.translatePipe.transform("chart__title");
   }
 
   ngOnDestroy() {

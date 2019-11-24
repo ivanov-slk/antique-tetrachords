@@ -16,7 +16,6 @@ export class MelodyItemComponent implements OnInit {
   ngOnInit() {}
 
   onPlay() {
-    console.log('playing...');
     this.synthService.handleMelody(this.melody);
   }
 }

@@ -1,8 +1,8 @@
 export class Melody {
   name: string;
-  ratios: string[];
+  ratios: Array<string | number>;
 
-  constructor(name: string, ratios: string[]) {
+  constructor(name: string, ratios: Array<string | number>) {
     this.name = name;
     this.ratios = ratios;
   }

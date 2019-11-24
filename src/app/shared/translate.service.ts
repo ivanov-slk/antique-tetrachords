@@ -65,7 +65,19 @@ const en = {
   chart__title: "Comparison of tetrachords' intervals",
   chart__legend: "Interval",
   antique: "Antique",
-  byzantine: "Byzantine"
+  byzantine: "Byzantine",
+  voiceI: "First voice",
+  voiceII: "Second voice",
+  voiceIII: "Third voice",
+  voiceIVlegetos: "Fourth voice - legetos",
+  voiceIVagiaFromPa: "Fourth voice - agia from Pa",
+  voiceIVagiaFromDi: "Fourth voice - agia from Di",
+  voiceIVchromatic: "Fourth voice - chromatic",
+  voiceV: "Fifth voice",
+  voiceVI: "Sixth voice",
+  voiceVIIenharmonic: "Seventh voice - enharmonic",
+  voiceVIItetraphonos: "Seventh voice - tetraphonos",
+  voiceVIII: "Eighth voice"
 };
 
 const ru = {
@@ -92,5 +104,17 @@ const ru = {
   chart__title: "Сравнение тетрахордных интервалов",
   chart__legend: "Интервал",
   antique: "Античные",
-  byzantine: "Византийские"
+  byzantine: "Византийские",
+  voiceI: "Глас первый",
+  voiceII: "Глас второй",
+  voiceIII: "Глас третий",
+  voiceIVlegetos: "Глас четвертый - легетос",
+  voiceIVagiaFromPa: "Глас четвертый - агия - па",
+  voiceIVagiaFromDi: "Глас четвертый - агия - ди",
+  voiceIVchromatic: "Глас четвертый - хроматический",
+  voiceV: "Глас пятый",
+  voiceVI: "Глас шестой",
+  voiceVIIenharmonic: "Глас седмой - энгармонический",
+  voiceVIItetraphonos: "Глас седмой - тетрафонос",
+  voiceVIII: "Глас восьмой"
 };

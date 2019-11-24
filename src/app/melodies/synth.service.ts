@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import * as Tone from 'tone';
-import { Subject } from 'rxjs';
-import { Melody } from './melody.model';
+import * as Tone from "tone";
+import { Subject } from "rxjs";
+import { Melody } from "./melody.model";
 
 export interface MelodyData {
   name: string;
-  factors: number[];
+  // factors: number[];
   cents: number[];
   frequencies: number[];
 }
@@ -16,24 +16,45 @@ export class SynthService {
   synth: any;
   baseFrequency: number = 250;
   melodyDataEmitter = new Subject<MelodyData>();
+  readonly totalCents = 498.044999134612; // the total cents in a tetrachord
+  readonly totalUnits = 30; // the total units in a byzantine tetrachord
 
   constructor() {
     this.synth = new Tone.Synth().toMaster();
   }
 
-  private calculateMelodyData(melody: Melody): MelodyData {
-    // parse the ratios
-    const factors = melody.ratios.map(element => {
-      let numerator: string;
-      let denominator: string;
-      [numerator, denominator] = element.split('/');
-      return +numerator / +denominator;
+  private calculateCents(melody: Melody): number[] {
+    const cents = melody.ratios.map(element => {
+      let intervalInCents: number;
+      if (typeof element === "string") {
+        let numerator: string;
+        let denominator: string;
+        [numerator, denominator] = element.split("/");
+        const ratio = +numerator / +denominator;
+        intervalInCents = 1200 * Math.log2(ratio);
+      } else if (typeof element === "number") {
+        intervalInCents = this.totalCents * (element / this.totalUnits);
+      }
+      return intervalInCents;
     });
+    return cents;
+  }
 
-    // calculate the cents
-    const cents = factors.map(element => {
-      return 1200 * Math.log2(element);
-    });
+  private calculateMelodyData(melody: Melody): MelodyData {
+    // // parse the ratios
+    // const factors = melody.ratios.map(element => {
+    //   let numerator: string;
+    //   let denominator: string;
+    //   [numerator, denominator] = element.split("/");
+    //   return +numerator / +denominator;
+    // });
+
+    // // calculate the cents
+    // const cents = factors.map(element => {
+    //   return 1200 * Math.log2(element);
+    // });
+    const cents = this.calculateCents(melody);
+    console.log(cents.reduce((a, b) => (a = a + b)));
 
     // calculate the frequencies
     let frequencies: number[] = [this.baseFrequency];
@@ -47,7 +68,7 @@ export class SynthService {
 
     return {
       name: melody.name,
-      factors,
+      // factors,
       cents,
       frequencies //shorthand notation
     };
@@ -55,12 +76,12 @@ export class SynthService {
 
   private playMelody(frequencies: number[]) {
     let synth = new Tone.Synth().toMaster();
-    const patternName = 'up';
+    const patternName = "up";
 
     let pattern = new Tone.Pattern(
       function(time, note) {
         //the order of the notes passed in depends on the pattern
-        synth.triggerAttackRelease(note, '4n', time);
+        synth.triggerAttackRelease(note, "4n", time);
       },
       frequencies,
       patternName
@@ -68,7 +89,7 @@ export class SynthService {
     pattern.iterations = frequencies.length;
     pattern.start();
     Tone.Transport.bpm.value = 120;
-    Tone.Transport.start('+0.1');
+    Tone.Transport.start("+0.1");
   }
 
   handleMelody(melody: Melody) {

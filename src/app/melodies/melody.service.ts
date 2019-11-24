@@ -43,7 +43,19 @@ export class MelodyService {
       "1.12246204831/1",
       "1.05946309436/1",
       "1.12246204831/1"
-    ])
+    ]),
+    new Melody("voiceI", [10, 8, 12]),
+    new Melody("voiceII", [8, 16, 6]),
+    new Melody("voiceIII", [12, 12, 6]),
+    new Melody("voiceIVlegetos", [10, 10, 10]),
+    new Melody("voiceIVagiaFromPa", [10, 8, 12]),
+    new Melody("voiceIVagiaFromDi", [14, 8, 8]),
+    new Melody("voiceIVchromatic", [8, 14, 8]),
+    new Melody("voiceV", [10, 8, 12, 12]),
+    new Melody("voiceVI", [6, 18, 6]),
+    new Melody("voiceVIIenharmonic", [12, 12, 6]),
+    new Melody("voiceVIItetraphonos", [8, 12, 10, 12]),
+    new Melody("voiceVIII", [14, 8, 8, 12])
   ];
 
   getMelodies(melodyGroup: string) {
