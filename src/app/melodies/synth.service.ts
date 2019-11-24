@@ -6,7 +6,6 @@ import { Melody } from "./melody.model";
 
 export interface MelodyData {
   name: string;
-  // factors: number[];
   cents: number[];
   frequencies: number[];
 }
@@ -15,6 +14,7 @@ export interface MelodyData {
 export class SynthService {
   synth: any;
   baseFrequency: number = 250;
+  beatsPerMinute: number = 120;
   melodyDataEmitter = new Subject<MelodyData>();
   readonly totalCents = 498.044999134612; // the total cents in a tetrachord
   readonly totalUnits = 30; // the total units in a byzantine tetrachord
@@ -68,7 +68,6 @@ export class SynthService {
 
     return {
       name: melody.name,
-      // factors,
       cents,
       frequencies //shorthand notation
     };
@@ -88,7 +87,7 @@ export class SynthService {
     );
     pattern.iterations = frequencies.length;
     pattern.start();
-    Tone.Transport.bpm.value = 120;
+    Tone.Transport.bpm.value = this.beatsPerMinute;
     Tone.Transport.start("+0.1");
   }
 
@@ -96,5 +95,14 @@ export class SynthService {
     const melodyData = this.calculateMelodyData(melody);
     this.playMelody(melodyData.frequencies);
     this.melodyDataEmitter.next(melodyData);
+  }
+
+  setParameters(freq: number, bpm: number) {
+    if (freq) {
+      this.baseFrequency = freq;
+    }
+    if (bpm) {
+      this.beatsPerMinute = bpm;
+    }
   }
 }

@@ -43,6 +43,9 @@ export class TranslateService {
 
 const en = {
   title: "Antique Tetrachords",
+  settings_freq: "Base frequency",
+  settings__bpm: "Beats per minute",
+  settings__submit: "Save settings",
   temperedDur: "Tempered Dur",
   temperedMoll: "Tempered Moll",
   architesEnharmonic: "Archites - Enharmonic",
@@ -82,6 +85,9 @@ const en = {
 
 const ru = {
   title: "Античные тетрахорды",
+  settings_freq: "Базовая частота",
+  settings__bpm: "Удары в минуту",
+  settings__submit: "Сохранить настройки",
   temperedDur: "Темперированный - мажор",
   temperedMoll: "Темперированный - минор",
   architesEnharmonic: "Архит - энгармонический",

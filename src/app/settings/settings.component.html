@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-success">
+  <div class="container-fluid">
+    <form class="form-inline" (ngSubmit)="onSubmit()" #f="ngForm">
+      <label for="freq">{{ "settings_freq" | translate }}</label>
+      <input
+        type="number"
+        class="form-control form-control-sm"
+        id="freq"
+        name="freq"
+        ngModel
+        style="margin-right:10px;"
+      />
+
+      <label for="bpm">{{ "settings__bpm" | translate }} </label>
+      <input
+        type="number"
+        class="form-control form-control-sm"
+        id="bpm"
+        name="bpm"
+        ngModel
+        style="margin-right:10px;"
+      />
+      <button type="submit" class="btn btn-warning">
+        {{ "settings__submit" | translate }}
+      </button>
+    </form>
+  </div>
+</nav>
