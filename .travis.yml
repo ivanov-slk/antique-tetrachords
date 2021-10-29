@@ -10,4 +10,5 @@ before_script:
 script:
   - npm install
   - npm run build
+  - cd /home/travis/build/ivanov-slk/antique-tetrachords
   - firebase deploy --only hosting --token "1//03NSgdZCdlWDHCgYIARAAGAMSNwF-L9IrravzB06_OQJAnYVSjCVM4cuB7ajxt8o_QbddZlWWDwbsbTW4wf6dLDVet_4cK9G5FlY"
