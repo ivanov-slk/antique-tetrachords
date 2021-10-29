@@ -8,7 +8,7 @@ interface TranslationTokens {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class TranslateService {
   data = {};
@@ -69,6 +69,7 @@ const en = {
   chart__legend: "Interval",
   antique: "Antique",
   byzantine: "Byzantine",
+  diatonicScale: "Diatonic Scale",
   voiceI: "First voice",
   voiceII: "Second voice",
   voiceIII: "Third voice",
@@ -80,7 +81,7 @@ const en = {
   voiceVI: "Sixth voice",
   voiceVIIenharmonic: "Seventh voice - enharmonic",
   voiceVIItetraphonos: "Seventh voice - tetraphonos",
-  voiceVIII: "Eighth voice"
+  voiceVIII: "Eighth voice",
 };
 
 const ru = {
@@ -111,6 +112,7 @@ const ru = {
   chart__legend: "Интервал",
   antique: "Античные",
   byzantine: "Византийские",
+  diatonicScale: "Диатонический лад",
   voiceI: "Глас первый",
   voiceII: "Глас второй",
   voiceIII: "Глас третий",
@@ -122,5 +124,5 @@ const ru = {
   voiceVI: "Глас шестой",
   voiceVIIenharmonic: "Глас седмой - энгармонический",
   voiceVIItetraphonos: "Глас седмой - тетрафонос",
-  voiceVIII: "Глас восьмой"
+  voiceVIII: "Глас восьмой",
 };

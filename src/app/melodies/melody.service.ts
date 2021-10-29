@@ -7,12 +7,12 @@ export class MelodyService {
     new Melody("temperedDur", [
       "1.12246204831/1",
       "1.12246204831/1",
-      "1.05946309436/1"
+      "1.05946309436/1",
     ]),
     new Melody("temperedMoll", [
       "1.12246204831/1",
       "1.05946309436/1",
-      "1.12246204831/1"
+      "1.12246204831/1",
     ]),
     new Melody("architesEnharmonic", ["28/27", "36/35", "5/4"]),
     new Melody("eratosthenesEnharmonic", ["40/39", "39/38", "19/15"]),
@@ -30,20 +30,21 @@ export class MelodyService {
     new Melody("ptolemyDiatonicTonic", ["28/27", "8/7", "9/8"]),
     new Melody("ptolemyDiatonicHard", ["16/15", "9/8", "10/9"]),
     new Melody("ptolemyDiatonicFlat", ["12/11", "11/10", "10/9"]),
-    new Melody("ptolemyDiatonicDouble", ["256/243", "9/8", "9/8"])
+    new Melody("ptolemyDiatonicDouble", ["256/243", "9/8", "9/8"]),
   ];
 
   private byzantineMelodies = [
     new Melody("temperedDur", [
       "1.12246204831/1",
       "1.12246204831/1",
-      "1.05946309436/1"
+      "1.05946309436/1",
     ]),
     new Melody("temperedMoll", [
       "1.12246204831/1",
       "1.05946309436/1",
-      "1.12246204831/1"
+      "1.12246204831/1",
     ]),
+    new Melody("diatonicScale", [12, 10, 8, 12, 12, 10, 8]),
     new Melody("voiceI", [10, 8, 12]),
     new Melody("voiceII", [8, 16, 6]),
     new Melody("voiceIII", [12, 12, 6]),
@@ -55,7 +56,7 @@ export class MelodyService {
     new Melody("voiceVI", [6, 18, 6]),
     new Melody("voiceVIIenharmonic", [12, 12, 6]),
     new Melody("voiceVIItetraphonos", [8, 12, 10, 12]),
-    new Melody("voiceVIII", [14, 8, 8, 12])
+    new Melody("voiceVIII", [14, 8, 8, 12]),
   ];
 
   getMelodies(melodyGroup: string) {
