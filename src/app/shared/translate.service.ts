@@ -46,8 +46,6 @@ const en = {
   settings_freq: "Base frequency",
   settings__bpm: "Beats per minute",
   settings__submit: "Save settings",
-  temperedDur: "Tempered Dur",
-  temperedMoll: "Tempered Moll",
   architesEnharmonic: "Archites - Enharmonic",
   eratosthenesEnharmonic: "Eratosthenes - Enharmonic",
   didimesEnharmonic: "Didimes - Enharmonic",
@@ -69,6 +67,7 @@ const en = {
   chart__legend: "Interval",
   antique: "Antique",
   byzantine: "Byzantine",
+  tempered: "Tempered",
   diatonicScale: "Diatonic Scale",
   voiceI: "First voice",
   voiceII: "Second voice",
@@ -82,6 +81,10 @@ const en = {
   voiceVIIenharmonic: "Seventh voice - enharmonic",
   voiceVIItetraphonos: "Seventh voice - tetraphonos",
   voiceVIII: "Eighth voice",
+  temperedDurTetrachord: "Tempered Dur (Tetrachord)",
+  temperedMollTetrachord: "Tempered Moll (Tetrachord)",
+  temperedDurScale: "Tempered Dur (Scale)",
+  temperedMollScale: "Tempered Moll (Scale)",
 };
 
 const ru = {
@@ -89,8 +92,6 @@ const ru = {
   settings_freq: "Базовая частота",
   settings__bpm: "Удары в минуту",
   settings__submit: "Сохранить настройки",
-  temperedDur: "Темперированный - мажор",
-  temperedMoll: "Темперированный - минор",
   architesEnharmonic: "Архит - энгармонический",
   eratosthenesEnharmonic: "Эратосфэн - энгармонический",
   didimesEnharmonic: "Дидим - энгармонический",
@@ -112,6 +113,7 @@ const ru = {
   chart__legend: "Интервал",
   antique: "Античные",
   byzantine: "Византийские",
+  tempered: "Темперированные",
   diatonicScale: "Диатонический лад",
   voiceI: "Глас первый",
   voiceII: "Глас второй",
@@ -125,4 +127,8 @@ const ru = {
   voiceVIIenharmonic: "Глас седмой - энгармонический",
   voiceVIItetraphonos: "Глас седмой - тетрафонос",
   voiceVIII: "Глас восьмой",
+  temperedDurTetrachord: "Темперированный - мажор (тетрахорд)",
+  temperedMollTetrachord: "Темперированный - минор (тетрахорд)",
+  temperedDurScale: "Темперированный - мажор (лад)",
+  temperedMollScale: "Темперированный - минор (лад)",
 };

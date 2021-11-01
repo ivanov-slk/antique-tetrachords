@@ -20,6 +20,16 @@
         <h5>{{ "byzantine" | translate }}</h5>
       </a>
     </li>
+    <li class="nav-item">
+      <a
+        href="#"
+        class="nav-link"
+        (click)="setMelodyGroup('tempered')"
+        [ngClass]="{ active: melodyGroup === 'tempered' }"
+      >
+        <h5>{{ "tempered" | translate }}</h5>
+      </a>
+    </li>
   </ul>
   <app-melody-item
     *ngFor="let melodyEl of melodies"
