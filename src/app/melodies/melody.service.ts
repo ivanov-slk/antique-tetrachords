@@ -4,16 +4,6 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class MelodyService {
   private antiqueMelodies: Melody[] = [
-    new Melody("temperedDur", [
-      "1.12246204831/1",
-      "1.12246204831/1",
-      "1.05946309436/1",
-    ]),
-    new Melody("temperedMoll", [
-      "1.12246204831/1",
-      "1.05946309436/1",
-      "1.12246204831/1",
-    ]),
     new Melody("architesEnharmonic", ["28/27", "36/35", "5/4"]),
     new Melody("eratosthenesEnharmonic", ["40/39", "39/38", "19/15"]),
     new Melody("didimesEnharmonic", ["32/31", "31/30", "5/4"]),
@@ -33,17 +23,7 @@ export class MelodyService {
     new Melody("ptolemyDiatonicDouble", ["256/243", "9/8", "9/8"]),
   ];
 
-  private byzantineMelodies = [
-    new Melody("temperedDur", [
-      "1.12246204831/1",
-      "1.12246204831/1",
-      "1.05946309436/1",
-    ]),
-    new Melody("temperedMoll", [
-      "1.12246204831/1",
-      "1.05946309436/1",
-      "1.12246204831/1",
-    ]),
+  private byzantineMelodies: Melody[] = [
     new Melody("diatonicScale", [12, 10, 8, 12, 12, 10, 8]),
     new Melody("voiceI", [10, 8, 12]),
     new Melody("voiceII", [8, 16, 6]),
@@ -59,11 +39,44 @@ export class MelodyService {
     new Melody("voiceVIII", [14, 8, 8, 12]),
   ];
 
+  private temperedMelodies: Melody[] = [
+    new Melody("temperedDurTetrachord", [
+      "1.12246204831/1",
+      "1.12246204831/1",
+      "1.05946309436/1",
+    ]),
+    new Melody("temperedDurScale", [
+      "1.12246204831/1",
+      "1.12246204831/1",
+      "1.05946309436/1",
+      "1.12246204831/1",
+      "1.12246204831/1",
+      "1.12246204831/1",
+      "1.05946309436/1",
+    ]),
+    new Melody("temperedMollTetrachord", [
+      "1.12246204831/1",
+      "1.05946309436/1",
+      "1.12246204831/1",
+    ]),
+    new Melody("temperedMollScale", [
+      "1.12246204831/1",
+      "1.05946309436/1",
+      "1.12246204831/1",
+      "1.12246204831/1",
+      "1.05946309436/1",
+      "1.12246204831/1",
+      "1.12246204831/1",
+    ]),
+  ];
+
   getMelodies(melodyGroup: string) {
     if (melodyGroup === "antique") {
       return this.antiqueMelodies.slice();
-    } else {
+    } else if (melodyGroup === "byzantine") {
       return this.byzantineMelodies.slice();
+    } else {
+      return this.temperedMelodies.slice();
     }
   }
 }

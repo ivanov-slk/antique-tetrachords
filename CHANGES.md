@@ -1,5 +1,10 @@
 # Changelog
 
+# 1.2.0
+### New
+- Added tempered scales (dur + moll);
+- Added separate tab for tempered tetrachords.
+
 # 1.1.0
 
 ### New
