@@ -20,7 +20,7 @@ jobs:
           git fetch
           git checkout $GITHUB_HEAD_REF
 
-          CURRENT_TAG="$(jq -r .version package.json"
+          CURRENT_TAG="$(jq -r .version package.json)"
           CURRENT_COMMIT_ID=$(git rev-parse HEAD)
 
           git tag -a $CURRENT_TAG -m $CURRENT_COMMIT_ID
