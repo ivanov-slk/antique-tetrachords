@@ -1,9 +1,23 @@
 # Changelog
 
+---
+
+# 2.0.0
+
+### Breaking Changes
+
+- Updated everything to latest.
+
+---
+
 # 1.2.0
+
 ### New
+
 - Added tempered scales (dur + moll);
 - Added separate tab for tempered tetrachords.
+
+---
 
 # 1.1.0
 
@@ -12,27 +26,9 @@
 - Added GitHub Actions configuration for Firebase hosting;
 - Removed Travis.
 
-### Bugfixes
-
-### Breaking Changes
-
-### Community Contributions
-
-### Experimental
-
-### Documentation
+---
 
 # 1.0.0
-
-### New
-
-### Bugfixes
-
-### Breaking Changes
-
-### Community Contributions
-
-### Experimental
 
 ### Documentation
 
