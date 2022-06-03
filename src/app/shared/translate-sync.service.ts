@@ -9,7 +9,7 @@ export class TranslateSyncService {
 
   constructor() {}
 
-  sync() {
-    this.changeEmitter.next();
+  sync(value: string) {
+    this.changeEmitter.next(value);
   }
 }
