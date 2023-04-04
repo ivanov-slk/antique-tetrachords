@@ -25,7 +25,7 @@
     "plotly.js": "^2.20.0",
     "rxjs": "~7.5.5",
     "tone": "^14.7.77",
-    "tslib": "^2.4.0",
+    "tslib": "^2.5.0",
     "zone.js": "~0.11.5"
   },
   "devDependencies": {
